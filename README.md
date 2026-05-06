@@ -516,6 +516,48 @@ Monitoring:      structured logs, eval reports, agent run traces
 
 ---
 
+## Local Development
+
+Phase 01 provides the runnable project skeleton.
+
+Start PostgreSQL and Qdrant:
+
+```bash
+docker compose up -d postgres qdrant
+```
+
+Start the backend:
+
+```bash
+cd backend
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+Backend health check:
+
+```bash
+curl http://localhost:8000/health
+```
+
+Start the frontend:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open the dashboard at:
+
+```text
+http://localhost:5173
+```
+
+---
+
 ## Project Structure
 
 ```text

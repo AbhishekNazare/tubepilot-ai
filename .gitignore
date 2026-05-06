@@ -12,6 +12,7 @@ node_modules/
 dist/
 build/
 .vite/
+*.tsbuildinfo
 
 # Environment
 .env
@@ -35,4 +36,3 @@ qdrant-storage/
 # Logs
 *.log
 logs/
-
