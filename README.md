@@ -542,6 +542,14 @@ Backend health check:
 curl http://localhost:8000/health
 ```
 
+Seed synthetic analytics data into PostgreSQL:
+
+```bash
+cd backend
+source .venv/bin/activate
+python -m app.db.seed
+```
+
 Start the frontend:
 
 ```bash
@@ -645,6 +653,7 @@ youtube-creator-copilot/
 ├── data/
 │   ├── channels.csv
 │   ├── videos.csv
+│   ├── channel_metrics_daily.csv
 │   └── video_metrics_daily.csv
 │
 ├── models/
