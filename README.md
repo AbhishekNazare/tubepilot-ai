@@ -550,6 +550,22 @@ source .venv/bin/activate
 python -m app.db.seed
 ```
 
+Train the baseline video risk model:
+
+```bash
+cd backend
+source .venv/bin/activate
+python -m app.ml.train
+```
+
+Run a prediction:
+
+```bash
+curl -X POST http://localhost:8000/predictions/video-risk \
+  -H "Content-Type: application/json" \
+  -d '{"video_id":"video_104"}'
+```
+
 Start the frontend:
 
 ```bash

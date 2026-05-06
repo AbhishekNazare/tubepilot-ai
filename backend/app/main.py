@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.health import router as health_router
+from app.api.predictions import router as predictions_router
 from app.core.config import get_settings
 
 settings = get_settings()
@@ -21,6 +22,7 @@ app.add_middleware(
 )
 
 app.include_router(health_router)
+app.include_router(predictions_router)
 
 
 @app.get("/")
@@ -30,4 +32,3 @@ def root() -> dict[str, str]:
         "environment": settings.app_env,
         "docs": "/docs",
     }
-
