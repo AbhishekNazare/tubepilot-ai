@@ -566,6 +566,22 @@ curl -X POST http://localhost:8000/predictions/video-risk \
   -d '{"video_id":"video_104"}'
 ```
 
+Ingest creator guidance documents:
+
+```bash
+curl -X POST http://localhost:8000/documents/ingest \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+Search the RAG corpus:
+
+```bash
+curl -X POST http://localhost:8000/documents/search \
+  -H "Content-Type: application/json" \
+  -d '{"query":"How should I fix low CTR and retention?","top_k":3}'
+```
+
 Start the frontend:
 
 ```bash
