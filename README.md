@@ -582,6 +582,14 @@ curl -X POST http://localhost:8000/documents/search \
   -d '{"query":"How should I fix low CTR and retention?","top_k":3}'
 ```
 
+Run the agent workflow:
+
+```bash
+curl -X POST http://localhost:8000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"channel_id":"channel_001","query":"Why did my latest video underperform?"}'
+```
+
 Start the frontend:
 
 ```bash
