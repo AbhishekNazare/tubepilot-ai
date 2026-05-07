@@ -1,0 +1,22 @@
+[
+  {
+    "id": "rag_ctr_retention",
+    "type": "rag",
+    "query": "How should I fix low CTR and weak retention?",
+    "expected_terms": ["CTR", "retention"]
+  },
+  {
+    "id": "rag_upload_consistency",
+    "type": "rag",
+    "query": "What should I do if upload gaps increased?",
+    "expected_terms": ["Consistency", "cadence"]
+  },
+  {
+    "id": "agent_latest_underperformance",
+    "type": "agent",
+    "channel_id": "channel_001",
+    "query": "Why did my latest video underperform?",
+    "expected_tools": ["get_recent_videos", "predict_video_risk", "search_creator_docs"]
+  }
+]
+

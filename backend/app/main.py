@@ -6,8 +6,10 @@ from app.api.documents import router as documents_router
 from app.api.health import router as health_router
 from app.api.predictions import router as predictions_router
 from app.core.config import get_settings
+from app.core.logging import configure_logging, log_requests
 
 settings = get_settings()
+configure_logging()
 
 app = FastAPI(
     title="TubePilot AI API",
@@ -22,6 +24,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.middleware("http")(log_requests)
 
 app.include_router(health_router)
 app.include_router(chat_router)

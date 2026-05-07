@@ -590,6 +590,15 @@ curl -X POST http://localhost:8000/chat \
   -d '{"channel_id":"channel_001","query":"Why did my latest video underperform?"}'
 ```
 
+Run evals:
+
+```bash
+cd backend
+source .venv/bin/activate
+python -m app.evals.rag_eval
+python -m app.evals.agent_eval
+```
+
 Start the frontend:
 
 ```bash
@@ -1171,6 +1180,25 @@ This is enough to make the project impressive and interview-ready without becomi
 ---
 
 ## Example Demo Script
+
+Before the demo, run:
+
+```bash
+docker compose up -d postgres qdrant
+cd backend
+source .venv/bin/activate
+python -m app.db.seed
+python -m app.ml.train
+uvicorn app.main:app --reload
+```
+
+In another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ### Demo 1: Ask why a video underperformed
 
