@@ -90,9 +90,13 @@ export function ChatPanel() {
           </div>
         </div>
         <div className="citation-list">
-          {response.citations.map((citation) => (
-            <CitationCard citation={citation} key={citation.chunk_id} />
-          ))}
+          {response.citations.length > 0 ? (
+            response.citations.map((citation) => (
+              <CitationCard citation={citation} key={citation.chunk_id} />
+            ))
+          ) : (
+            <div className="empty-state">No citations were needed for this answer.</div>
+          )}
         </div>
       </section>
 
@@ -108,4 +112,3 @@ export function ChatPanel() {
     </div>
   );
 }
-

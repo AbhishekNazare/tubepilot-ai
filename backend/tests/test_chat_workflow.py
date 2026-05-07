@@ -44,6 +44,7 @@ def test_creator_agent_runs_underperformance_workflow() -> None:
     assert response.answer
     assert response.citations
     assert [step.tool for step in response.agent_steps] == [
+        "classify_query",
         "get_recent_videos",
         "get_video_metrics",
         "get_channel_metrics",
@@ -52,6 +53,47 @@ def test_creator_agent_runs_underperformance_workflow() -> None:
         "generate_action_plan",
     ]
     assert run_count == 1
-    assert step_count == 6
+    assert step_count == 7
     assert prediction_count == 1
 
+
+def test_creator_agent_answers_product_help_without_video_analysis() -> None:
+    engine = create_engine("sqlite:///:memory:")
+    seed_database(engine, Path("data"))
+
+    with Session(engine) as session:
+        response = CreatorAgent().run(
+            session,
+            channel_id="channel_001",
+            query="hi, how does this product work?",
+        )
+
+    assert response.video_id == "not_applicable"
+    assert response.risk_level == "not_applicable"
+    assert response.citations == []
+    assert "creator analytics copilot" in response.answer
+    assert [step.tool for step in response.agent_steps] == ["classify_query", "describe_product"]
+
+
+def test_creator_agent_answers_guidance_without_video_prediction() -> None:
+    engine = create_engine("sqlite:///:memory:")
+    seed_database(engine, Path("data"))
+
+    with Session(engine) as session:
+        response = CreatorAgent().run(
+            session,
+            channel_id="channel_001",
+            query="How should I improve CTR and thumbnail clarity?",
+        )
+        prediction_count = session.scalar(select(func.count(Prediction.prediction_id)))
+
+    assert response.video_id == "not_applicable"
+    assert response.risk_level == "not_applicable"
+    assert response.citations
+    assert "title-thumbnail" in response.answer
+    assert [step.tool for step in response.agent_steps] == [
+        "classify_query",
+        "search_creator_docs",
+        "generate_guidance_answer",
+    ]
+    assert prediction_count == 0

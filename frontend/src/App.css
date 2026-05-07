@@ -296,6 +296,14 @@ button {
   background: #fbfcfd;
 }
 
+.empty-state {
+  border: 1px dashed #c9d5df;
+  border-radius: 8px;
+  padding: 18px;
+  color: #627084;
+  background: #f8fafb;
+}
+
 .citation-card div {
   display: flex;
   align-items: center;
