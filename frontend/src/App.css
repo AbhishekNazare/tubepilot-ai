@@ -178,6 +178,144 @@ button {
   outline: none;
 }
 
+.status-card {
+  border: 1px solid #cfdae3;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 16px 50px rgba(35, 48, 65, 0.08);
+}
+
+.status-card span {
+  display: block;
+  color: #68778a;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.status-card strong {
+  display: block;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+.page-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.chat-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 18px;
+}
+
+.chat-layout .wide {
+  grid-column: 1 / -1;
+}
+
+.chat-form {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+}
+
+.chat-form textarea {
+  min-height: 138px;
+  resize: vertical;
+  border: 1px solid #d6e0e8;
+  border-radius: 8px;
+  padding: 14px;
+  color: #1d2a36;
+  background: #fbfcfd;
+  font: inherit;
+  outline: none;
+}
+
+.chat-form textarea:focus {
+  border-color: #2d6978;
+  box-shadow: 0 0 0 3px rgba(45, 105, 120, 0.14);
+}
+
+.chat-form button {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  background: #184f5c;
+}
+
+.notice {
+  margin: 0 18px 18px;
+  border: 1px solid #f0d5ad;
+  border-radius: 8px;
+  padding: 12px;
+  color: #694707;
+  background: #fff4df;
+}
+
+.answer-card {
+  display: grid;
+  gap: 10px;
+  margin: 0 18px 18px;
+  border: 1px solid #d9e3ea;
+  border-radius: 8px;
+  padding: 16px;
+  background: #f5f9fb;
+}
+
+.answer-card div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #244a57;
+  font-weight: 800;
+}
+
+.answer-card p {
+  margin: 0;
+  color: #35475a;
+  line-height: 1.55;
+}
+
+.citation-list {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+}
+
+.citation-card {
+  border: 1px solid #dbe4eb;
+  border-radius: 8px;
+  padding: 14px;
+  background: #fbfcfd;
+}
+
+.citation-card div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.citation-card span,
+.citation-card small,
+.metric-tile small {
+  color: #69788b;
+  font-size: 12px;
+}
+
+.citation-card p {
+  margin: 10px 0;
+  color: #3c4e61;
+  line-height: 1.5;
+}
+
 .hero-grid,
 .workspace-grid {
   display: grid;
@@ -234,6 +372,7 @@ button {
   padding: 7px 11px;
   font-size: 12px;
   font-weight: 800;
+  text-transform: capitalize;
 }
 
 .risk-badge.high {
@@ -269,6 +408,11 @@ button {
   display: block;
   margin-top: 8px;
   font-size: 26px;
+}
+
+.metric-tile small {
+  display: block;
+  margin-top: 6px;
 }
 
 .metric-tile.good {
@@ -310,6 +454,10 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   padding: 18px;
+}
+
+.insight-summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .summary-stat,
@@ -519,7 +667,8 @@ button {
   .app-shell,
   .hero-grid,
   .workspace-grid,
-  .timeline {
+  .timeline,
+  .chat-layout {
     grid-template-columns: 1fr;
   }
 
@@ -578,4 +727,3 @@ button {
     flex-wrap: wrap;
   }
 }
-
